@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Taller Kraft — Caja Nº7</title>
+<title>Taller Kraft</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -32,7 +32,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ---------- Header ---------- */
   header {
     display: flex;
     align-items: center;
@@ -44,176 +43,108 @@
     font-family: 'Fraunces', serif;
     font-weight: 600;
     font-size: 20px;
-    letter-spacing: -0.01em;
     color: var(--ink);
     text-decoration: none;
   }
-  nav {
-    display: flex;
-    gap: 32px;
-  }
-  nav a {
-    color: var(--ink-soft);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-  }
+  nav { display: flex; gap: 32px; }
+  nav a { color: var(--ink-soft); text-decoration: none; font-size: 14px; font-weight: 500; }
   nav a:hover { color: var(--ink); }
-  @media (max-width: 600px) {
-    nav { display: none; }
-  }
+  @media (max-width: 600px) { nav { display: none; } }
 
-  /* ---------- Hero / product ---------- */
-  .hero {
+  .intro {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 6vw 6vw 4vw;
+    padding: 6vw 6vw 2vw;
   }
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  @media (max-width: 760px) {
-    .grid { grid-template-columns: 1fr; gap: 36px; }
-  }
-
-  .visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 10%;
-  }
-  .box-svg { width: 100%; max-width: 340px; height: auto; }
-
-  .eyebrow {
-    font-size: 13px;
-    color: var(--accent);
-    font-weight: 600;
-    margin: 0 0 16px 0;
-  }
-
+  .eyebrow { font-size: 13px; color: var(--accent); font-weight: 600; margin: 0 0 14px 0; }
   h1 {
     font-family: 'Fraunces', serif;
     font-weight: 500;
-    font-size: clamp(34px, 4.2vw, 48px);
-    line-height: 1.12;
-    margin: 0 0 20px 0;
-    color: var(--ink);
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.15;
+    margin: 0 0 16px 0;
   }
   h1 em { font-style: italic; color: var(--accent); }
+  .intro p.desc { font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 58ch; margin: 0; }
 
-  .desc {
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin: 0 0 30px 0;
-    max-width: 46ch;
+  /* ---------- banners ---------- */
+  .banner { display: none; max-width: 1100px; margin: 20px auto 0; padding: 0 6vw; }
+  .banner.show { display: block; }
+  .banner-inner { padding: 13px 20px; border-radius: 4px; font-size: 14.5px; font-weight: 500; }
+  .banner.ok .banner-inner { background: var(--ok-bg); color: var(--ok-text); }
+  .banner.cancel .banner-inner { background: var(--cancel-bg); color: var(--cancel-text); }
+
+  /* ---------- catálogo ---------- */
+  .catalogo-section { max-width: 1100px; margin: 0 auto; padding: 2vw 6vw 5vw; }
+  .catalogo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 28px;
   }
+  @media (max-width: 700px) { .catalogo-grid { grid-template-columns: 1fr; } }
 
-  .price-row {
+  .prod-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 28px;
     display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 26px;
+    flex-direction: column;
+    gap: 14px;
   }
-  .price { font-size: 28px; font-weight: 600; }
-  .price-note { font-size: 13px; color: var(--ink-soft); }
+  .prod-visual { display: flex; justify-content: center; padding: 12px 0; }
+  .prod-visual svg { width: 130px; height: 130px; }
+  .prod-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 20px; margin: 0; }
+  .prod-price { font-size: 20px; font-weight: 600; margin: 0; }
+  .prod-stock { font-size: 12.5px; color: var(--ink-soft); margin: -8px 0 0 0; }
+  .prod-stock.agotado { color: var(--accent); font-weight: 600; }
 
   .buy-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     background: var(--ink);
     color: var(--panel);
     border: none;
     border-radius: 3px;
-    padding: 16px 30px;
-    font-size: 15px;
+    padding: 12px 20px;
+    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    width: fit-content;
-    transition: background 0.15s ease, transform 0.15s ease;
+    transition: background 0.15s ease;
   }
-  .buy-btn:hover { background: var(--accent); transform: translateY(-1px); }
-
-  .trust-row {
-    display: flex;
-    gap: 22px;
-    margin-top: 22px;
-    flex-wrap: wrap;
-  }
-  .trust-item {
-    font-size: 12.5px;
+  .buy-btn:hover { background: var(--accent); }
+  .buy-btn.disabled {
+    background: transparent;
+    border: 1px solid var(--line);
     color: var(--ink-soft);
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    cursor: not-allowed;
   }
-  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--olive); flex-shrink: 0; }
 
-  .sandbox-note {
-    margin-top: 18px;
-    font-size: 12px;
-    color: var(--accent-soft);
-  }
-  .sandbox-note code {
-    background: var(--panel);
-    padding: 1px 5px;
-    border-radius: 3px;
+  .sandbox-note { font-size: 12px; color: var(--accent-soft); margin-top: 6px; text-align: center; }
+  .sandbox-note code { background: var(--bg); padding: 1px 5px; border-radius: 3px; color: var(--ink-soft); }
+
+  .catalogo-loading, .catalogo-error {
     color: var(--ink-soft);
+    font-size: 14px;
+    padding: 20px 0;
   }
 
-  /* ---------- Banner de resultado ---------- */
-  .banner {
-    display: none;
-    max-width: 1100px;
-    margin: 20px auto 0;
-    padding: 13px 6vw;
-  }
-  .banner.show { display: block; }
-  .banner-inner {
-    padding: 13px 20px;
-    border-radius: 4px;
-    font-size: 14.5px;
-    font-weight: 500;
-  }
-  .banner.ok .banner-inner { background: var(--ok-bg); color: var(--ok-text); }
-  .banner.cancel .banner-inner { background: var(--cancel-bg); color: var(--cancel-text); }
-
-  /* ---------- Detalle / info secundaria ---------- */
+  /* ---------- detalles ---------- */
   .details {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2vw 6vw 6vw;
+    padding: 44px 6vw 6vw;
     border-top: 1px solid var(--line);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    margin-top: 30px;
-    padding-top: 44px;
   }
-  @media (max-width: 760px) {
-    .details { grid-template-columns: 1fr; }
-  }
-  .details h3 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    font-size: 17px;
-    margin: 0 0 10px 0;
-  }
-  .details p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    margin: 0;
-  }
+  @media (max-width: 760px) { .details { grid-template-columns: 1fr; } }
+  .details h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; margin: 0 0 10px 0; }
+  .details p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
 
   footer {
     border-top: 1px solid var(--line);
@@ -224,14 +155,8 @@
     flex-wrap: wrap;
     gap: 10px;
   }
-  .footer-brand {
-    font-size: 13px;
-    color: var(--ink-soft);
-  }
-  .footer-disclosure {
-    font-size: 11.5px;
-    color: var(--accent-soft);
-  }
+  .footer-brand { font-size: 13px; color: var(--ink-soft); }
+  .footer-disclosure { font-size: 11.5px; color: var(--accent-soft); }
 </style>
 </head>
 <body>
@@ -239,7 +164,7 @@
 <header>
   <a href="#" class="wordmark">Taller Kraft</a>
   <nav>
-    <a href="#producto">Tienda</a>
+    <a href="#catalogo">Tienda</a>
     <a href="#detalles">Materiales</a>
     <a href="#envio">Envío</a>
   </nav>
@@ -247,42 +172,19 @@
 
 <div id="banner-ok" class="banner ok"><div class="banner-inner">Pago recibido — el pedido ya se ha sincronizado automáticamente.</div></div>
 <div id="banner-cancel" class="banner cancel"><div class="banner-inner">Pago cancelado — no se ha creado ningún pedido.</div></div>
+<div id="banner-agotado" class="banner cancel"><div class="banner-inner">Justo se ha agotado ese producto — inténtalo con otro.</div></div>
 
-<section class="hero" id="producto">
-  <div class="grid">
-    <div class="visual">
-      <svg class="box-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="100,20 180,58 100,96 20,58" fill="#D8C9A0" stroke="#241F1A" stroke-width="2"/>
-        <polygon points="20,58 100,96 100,180 20,142" fill="#C6B586" stroke="#241F1A" stroke-width="2"/>
-        <polygon points="180,58 100,96 100,180 180,142" fill="#B2A175" stroke="#241F1A" stroke-width="2"/>
-        <line x1="100" y1="96" x2="100" y2="180" stroke="#241F1A" stroke-width="1.5"/>
-        <line x1="20" y1="58" x2="100" y2="96" stroke="#241F1A" stroke-width="1" opacity="0.4"/>
-        <circle cx="62" cy="122" r="19" fill="none" stroke="#8C3B26" stroke-width="2.2" transform="rotate(-14 62 122)"/>
-        <text x="62" y="126" font-family="Fraunces, serif" font-size="9" fill="#8C3B26" text-anchor="middle" transform="rotate(-14 62 122)">Nº7</text>
-      </svg>
-    </div>
+<section class="intro">
+  <p class="eyebrow">EDICIÓN LIMITADA</p>
+  <h1>Cajas que <em>cuidan</em> lo que envuelven</h1>
+  <p class="desc">Embalaje de cartón kraft con acabado mate. Cada unidad se descuenta del stock real en cuanto se confirma el pago.</p>
+</section>
 
-    <div>
-      <p class="eyebrow">EDICIÓN LIMITADA</p>
-      <h1>La caja que <em>cuida</em> lo que envuelve</h1>
-      <p class="desc">Embalaje de cartón kraft con acabado mate, cierre por fricción y refuerzo interior. Pensada para envíos que quieren llegar tan bien como salieron.</p>
-
-      <div class="price-row">
-        <span class="price">24,90&nbsp;€</span>
-        <span class="price-note">IVA incluido · unidad</span>
-      </div>
-
-      <a href="#" id="buy-link" class="buy-btn">Comprar ahora</a>
-
-      <div class="trust-row">
-        <span class="trust-item"><span class="dot"></span>Pago seguro con Stripe</span>
-        <span class="trust-item"><span class="dot"></span>Cartón 100% reciclado</span>
-        <span class="trust-item"><span class="dot"></span>Envío en 24–48h</span>
-      </div>
-
-      <p class="sandbox-note">Entorno de pruebas · tarjeta <code>4242 4242 4242 4242</code>, cualquier fecha futura y CVC</p>
-    </div>
+<section class="catalogo-section" id="catalogo-section">
+  <div class="catalogo-grid" id="catalogo">
+    <p class="catalogo-loading">Cargando productos…</p>
   </div>
+  <p class="sandbox-note">Entorno de pruebas · tarjeta <code>4242 4242 4242 4242</code>, cualquier fecha futura y CVC</p>
 </section>
 
 <section class="details" id="detalles">
@@ -306,15 +208,63 @@
 </footer>
 
 <script>
-
+  const LISTAR_PRODUCTOS_ENDPOINT = "https://6zjjerhvi0.execute-api.eu-north-1.amazonaws.com/default/listar-productos";
   const CHECKOUT_ENDPOINT = "https://6zjjerhvi0.execute-api.eu-north-1.amazonaws.com/default/crear-checkout";
 
-  document.getElementById("buy-link").href = CHECKOUT_ENDPOINT;
+  function boxSvg() {
+    return `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="100,20 180,58 100,96 20,58" fill="#D8C9A0" stroke="#241F1A" stroke-width="2"/>
+        <polygon points="20,58 100,96 100,180 20,142" fill="#C6B586" stroke="#241F1A" stroke-width="2"/>
+        <polygon points="180,58 100,96 100,180 180,142" fill="#B2A175" stroke="#241F1A" stroke-width="2"/>
+        <line x1="100" y1="96" x2="100" y2="180" stroke="#241F1A" stroke-width="1.5"/>
+      </svg>`;
+  }
 
+  function renderProducto(p) {
+    const agotado = p.stock <= 0;
+    const precioTexto = p.precio.toFixed(2).replace(".", ",") + " €";
+    return `
+      <div class="prod-card">
+        <div class="prod-visual">${boxSvg()}</div>
+        <h3>${p.nombre}</h3>
+        <p class="prod-price">${precioTexto}</p>
+        <p class="prod-stock ${agotado ? "agotado" : ""}">${agotado ? "Agotado" : `${p.stock} unidades disponibles`}</p>
+        ${
+          agotado
+            ? `<span class="buy-btn disabled">Agotado</span>`
+            : `<a class="buy-btn" href="${CHECKOUT_ENDPOINT}?producto=${encodeURIComponent(p.id)}">Comprar ahora</a>`
+        }
+      </div>`;
+  }
+
+  async function cargarCatalogo() {
+    const contenedor = document.getElementById("catalogo");
+    try {
+      const respuesta = await fetch(LISTAR_PRODUCTOS_ENDPOINT);
+      const productos = await respuesta.json();
+      if (!Array.isArray(productos) || productos.length === 0) {
+        contenedor.innerHTML = `<p class="catalogo-error">No hay productos disponibles ahora mismo.</p>`;
+        return;
+      }
+      contenedor.innerHTML = productos.map(renderProducto).join("");
+    } catch (error) {
+      console.error("Error cargando el catálogo:", error);
+      contenedor.innerHTML = `<p class="catalogo-error">No se pudo cargar el catálogo. Inténtalo de nuevo más tarde.</p>`;
+    }
+  }
+
+  cargarCatalogo();
+
+  // Banners según el resultado de la compra
   const params = new URLSearchParams(window.location.search);
   const resultado = params.get("resultado");
+  const motivo = params.get("motivo");
+
   if (resultado === "exito") {
     document.getElementById("banner-ok").classList.add("show");
+  } else if (resultado === "cancelado" && motivo === "agotado") {
+    document.getElementById("banner-agotado").classList.add("show");
   } else if (resultado === "cancelado") {
     document.getElementById("banner-cancel").classList.add("show");
   }
